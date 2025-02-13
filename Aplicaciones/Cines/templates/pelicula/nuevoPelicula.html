@@ -1,0 +1,76 @@
+{% extends "plantilla.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Nuevo Película</h2>
+    <form action="{% url 'guardarPelicula' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Ingrese el título de la película" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" id="descripcion" class="form-control" placeholder="Ingrese una breve descripción de la película" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_estreno">Fecha de Estreno:</label>
+            <input type="date" name="fecha_estreno" id="fecha_estreno" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genero">Género:</label>
+            <select name="genero" id="genero" class="form-control" required>
+                {% for genero in generos %}
+                    <option value="{{ genero.id }}">{{ genero.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="director">Director:</label>
+            <select name="director" id="director" class="form-control">
+                <option value="">Selecciona un Director</option>
+                {% for director in directores %}
+                    <option value="{{ director.id }}">{{ director.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="protagonistas">Protagonistas:</label>
+            <select name="protagonistas" id="protagonistas" class="form-control" multiple required>
+                {% for protagonista in protagonistas %}
+                    <option value="{{ protagonista.id }}">{{ protagonista.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pais_origen">País de Origen:</label>
+            <select name="pais_origen" id="pais_origen" class="form-control">
+                <option value="">Selecciona un País</option>
+                {% for pais in paises %}
+                    <option value="{{ pais.id }}">{{ pais.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="portada">Portada :</label>
+            <input type="file" name="portada" id="portada" class="form-control" accept="image/png, image/jpeg, image/jpg">
+        </div>
+
+        <div class="form-group">
+            <label for="trailer">Trailer :</label>
+            <input type="file" name="trailer" id="trailer" class="form-control" accept="application/pdf">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'listadoPeliculas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

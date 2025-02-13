@@ -1,0 +1,39 @@
+{% extends "plantilla.html" %}
+{% block body %}
+<div class="container">
+    <h2>Listado de Paises</h2>
+
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Pais</th>
+                <th>Bandera</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pais in paises %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ pais.nombre }}</td>
+                <td>
+                    {% if pais.bandera %}
+                        <img src="{{ pais.bandera.url }}" alt="Bandera de {{ pais.nombre }}" width="50">
+                        <a href="{{ pais.bandera.url }}" download="{{ pais.bandera.name }}" class="btn btn-info btn-sm">Descargar</a>
+                    {% else %}
+                        No disponible
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'editarPais' pais.id %}" onclick="return confirm('¿Estás seguro que deseas editar este país?')" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminarPais' pais.id %}" onclick="return confirm('¿Estás seguro de eliminar este país?')" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'nuevoPais' %}" class="btn btn-success">Nuevo Pais</a>
+</div>
+{% endblock %}

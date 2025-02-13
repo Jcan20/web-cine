@@ -1,0 +1,43 @@
+{% extends "plantilla.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Editar Director</h2>
+    <form action="{% url 'procesoActualizarDirector' director.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="nombre">Nombre del Director:</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" value="{{ director.nombre }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" name="email" class="form-control" id="email" value="{{ director.email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pais">País:</label>
+            <select name="pais" id="pais" class="form-control" required>
+                {% for pais in paises %}
+                    <option value="{{ pais.id }}" {% if pais.id == director.pais.id %} selected {% endif %}>
+                        {{ pais.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="foto">Foto del Director (Opcional):</label>
+            <input type="file" name="foto" class="form-control" accept="image/*">
+            {% if director.foto %}
+                <br>
+                <img src="{{ director.foto.url }}" width="100" alt="Foto actual">
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="{% url 'listadoDirectores' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "plantilla.html" %}
+{% block body %}
+<div class="container">
+    <h2>Editar Género</h2>
+    <form action="{% url 'procesoActualizarGenero' genero.id %}" method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre del Género:</label>
+        <input type="text" name="nombre" class="form-control" id="nombre" value="{{ genero.nombre }}" required>
+        <br>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+{% endblock %}

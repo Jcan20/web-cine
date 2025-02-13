@@ -1,0 +1,63 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+
+{% block body %}
+  <!-- Sección de bienvenida -->
+  <section class="welcome-section text-center bg-dark text-white py-5">
+    <div class="container">
+      <h1 class="display-4">Bienvenidos al Mundo del Cine</h1>
+      <p class="lead">Explora el arte de la cinematografía, conoce a tus actores favoritos y sumérgete en el universo del cine.</p>
+    </div>
+  </section>
+
+  <!-- Sección de actores destacados -->
+  <section class="actors-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Actores Destacados</h2>
+      <div class="row">
+        <!-- Actor 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/JUZCUJYV2FCKTGRZ25XTYH3CXE.jpg" class="card-img-top" alt="Actor 1" width="50" height="50">
+            <div class="card-body">
+              <h5 class="card-title">Robert Downey Jr.</h5>
+              <p class="card-text">Conocido por su papel como Iron Man en el universo cinematográfico de Marvel, es un actor versátil con una carrera llena de éxitos.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Actor 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZN0iKUk7sU7d8TUYTDtkKJoxzyNRAtKD5xw&s" class="card-img-top" alt="Actor 1" width="50" height="50">
+            <div class="card-body">
+              <h5 class="card-title">Meryl Streep</h5>
+              <p class="card-text">Considerada una de las mejores actrices de todos los tiempos, Meryl ha brillado en una amplia variedad de géneros cinematográficos.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Actor 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/evolucion-leonardo-dicaprio-2-1573497809.jpg?crop=0.668xw:1.00xh;0.0986xw,0&resize=980:*" class="card-img-top" alt="Leonardo DiCaprio" width="50" height="50">
+            <div class="card-body">
+              <h5 class="card-title">Leonardo DiCaprio</h5>
+              <p class="card-text">Un actor conocido por sus papeles en películas como 'Titanic' y 'El lobo de Wall Street', DiCaprio ha demostrado ser un talento único en la pantalla.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección sobre cinematografía -->
+  <section class="cinematography-section bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">El Arte de la Cinematografía</h2>
+      <p class="text-center">La cinematografía es el alma visual del cine. A través de la iluminación, los encuadres, los movimientos de cámara y el color, los cineastas crean historias que nos cautivan y emocionan.</p>
+      <div class="text-center">
+        <img src="https://concepto.de/wp-content/uploads/2018/04/hollywood-historia-min.jpg" class="card-img-top" alt="Historia de Hollywood" width="250" height="150">
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

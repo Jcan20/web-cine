@@ -1,0 +1,30 @@
+{% extends "plantilla.html" %}
+{% block body %}
+<div class="container">
+    <h2>Listado de Géneros</h2>
+
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Género</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for genero in generos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ genero.nombre }}</td>
+                <td>
+                    <a href="{% url 'editarGenero' genero.id %}" onclick="return confirm('¿Estás seguro que deseas editar este género?')" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminarGenero' genero.id %}" onclick="return confirm('¿Estás seguro de eliminar este género?')" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'nuevoGenero' %}" class="btn btn-success">Nuevo Género</a>
+</div>
+{% endblock %}

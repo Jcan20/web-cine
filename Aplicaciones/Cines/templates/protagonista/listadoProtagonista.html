@@ -1,0 +1,45 @@
+{% extends "plantilla.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Listado de Protagonistas</h2>
+
+    <table class="table table-bordered table-striped table-hover table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Protagonista</th>
+                <th>País</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for protagonista in protagonistas %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ protagonista.nombre }}</td>
+                <td>{{ protagonista.pais.nombre }}</td>
+                <td>
+                    {% if protagonista.foto %}
+                        <a href="{{ protagonista.foto.url }}" download>
+                            <img src="{{ protagonista.foto.url }}" width="50" alt="Foto del protagonista">
+                        </a>
+                        <br>
+                        <a href="{{ protagonista.foto.url }}" download class="btn btn-info btn-sm">Descargar Foto</a>
+                    {% else %}
+                        <span>No disponible</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'editarProtagonista' protagonista.id %}" onclick="return confirm('¿Estás seguro que deseas editar este protagonista?')" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eliminarProtagonista' protagonista.id %}" onclick="return confirm('¿Estás seguro de eliminar este protagonista?')" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'nuevoProtagonista' %}" class="btn btn-success">Nuevo Protagonista</a>
+</div>
+{% endblock %}
