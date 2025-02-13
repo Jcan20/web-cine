@@ -123,9 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 # Configuración de archivos estáticos
-STATIC_URL = '/static/'
+STATIC_URL = 'Cine/static/'
 
-# Solo cuando no esté en modo debug
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
